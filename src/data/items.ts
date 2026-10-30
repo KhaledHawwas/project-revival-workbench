@@ -19,7 +19,7 @@ export type Project = BaseItem & {
   repo?: string;
   image?: string;
   outcome?: string;
-  featured: boolean;
+  featured?: boolean;
 };
 
 export type Certification = BaseItem & {

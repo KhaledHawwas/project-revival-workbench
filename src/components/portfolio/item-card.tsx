@@ -21,8 +21,8 @@ const projectColors: Record<string, string> = {
 
 export function ItemCard({ item }: { item: NormalizedItem }) {
   const data = item.data as Record<string, string | string[] | boolean | undefined>;
-  const type = data.type as string | undefined;
-  const status = data.status as string | undefined;
+  const type = data["type"] as string | undefined;
+  const status = data["status"] as string | undefined;
   const projectClass = item.collection === "projects" ? (projectColors[item.id] ?? "project-default") : "";
 
   return (
