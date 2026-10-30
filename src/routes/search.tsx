@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { getAllItems, type NormalizedItem } from "@/lib/portfolio";
-import { allSkills } from "@/lib/portfolio";
+import { searchPortfolio as search, type NormalizedItem } from "@/lib/portfolio";
 
 export const Route = createFileRoute("/search")({
   head: () => ({
@@ -16,31 +15,6 @@ export const Route = createFileRoute("/search")({
   }),
   component: Search
 });
-
-function search(term: string): NormalizedItem[] {
-  const query = term.trim().toLowerCase();
-  if (!query) return [];
-  const items = getAllItems();
-  const matchingSkillIds = new Set(
-    allSkills
-      .filter(
-        (skill) =>
-          skill.id.includes(query) ||
-          skill.name.toLowerCase().includes(query) ||
-          skill.aliases.some((alias) => alias.toLowerCase().includes(query)) ||
-          skill.body.toLowerCase().includes(query)
-      )
-      .map((skill) => skill.id)
-  );
-  return items.filter(
-    (item) =>
-      item.title.toLowerCase().includes(query) ||
-      item.summary.toLowerCase().includes(query) ||
-      item.skills.some((skill) => matchingSkillIds.has(skill) || skill.includes(query)) ||
-      // Full-text match across every field (event, issuer, outcome, organization, body, …)
-      JSON.stringify(item.data).toLowerCase().includes(query)
-  );
-}
 
 function Search() {
   const [term, setTerm] = useState("");
