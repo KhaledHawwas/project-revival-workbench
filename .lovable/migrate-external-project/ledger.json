@@ -2,17 +2,89 @@
   "source": "code-archive",
   "sourceStack": "Astro 5 static site, Tailwind CSS 4, Astro Content Collections, Pagefind search",
   "capabilities": [
-    { "capability": "code", "source": "protoflio_3.zip", "outcome": "migrate", "status": "migrate", "next_action": "Recreate all routes and components in TanStack Start" },
-    { "capability": "schema", "source": "Astro content collection schemas", "outcome": "migrate", "status": "migrate", "next_action": "Port Zod schemas to TypeScript types in src/data" },
-    { "capability": "records", "source": "src/content/**/*.md (29 skills, 14 projects, 2 certifications, 2 achievements, 1 volunteering)", "outcome": "migrate", "status": "migrate", "next_action": "Inline into typed data modules" },
-    { "capability": "auth", "source": "none present", "outcome": "none", "status": "verified", "next_action": "" },
-    { "capability": "database", "source": "none present (fully static site)", "outcome": "none", "status": "verified", "next_action": "" },
-    { "capability": "search", "source": "Pagefind static search on /search", "outcome": "migrate", "status": "migrate", "next_action": "Client-side search over the typed content data, covering skill names and aliases" },
-    { "capability": "cv-download", "source": "public/cv.md", "outcome": "migrate", "status": "migrate", "next_action": "Serve from public/" },
-    { "capability": "project-images", "source": "public/projects/** (ainaa, all-notification-blocker, child-shield, tick)", "outcome": "migrate", "status": "migrate", "next_action": "Copy into public/projects" },
-    { "capability": "seo", "source": "per-page title/description/OG/Twitter tags", "outcome": "migrate", "status": "migrate", "next_action": "head() on every route; sitemap.xml simplified away (static hosting adds preview cards instead)" },
-    { "capability": "i18n-toggle", "source": "Header EN/عربي toggle switching html lang/dir", "outcome": "migrate", "status": "migrate", "next_action": "Port as client-side toggle in Header" },
-    { "capability": "external-providers", "source": "none (static, no API keys)", "outcome": "none", "status": "verified", "next_action": "" },
-    { "capability": "records-export", "source": "no database exists", "outcome": "none", "status": "verified", "next_action": "" }
+    {
+      "capability": "code",
+      "source": "protoflio_3.zip",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Recreate all routes and components in TanStack Start"
+    },
+    {
+      "capability": "schema",
+      "source": "Astro content collection schemas",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Port Zod schemas to TypeScript types in src/data"
+    },
+    {
+      "capability": "records",
+      "source": "src/content/**/*.md (29 skills, 14 projects, 2 certifications, 2 achievements, 1 volunteering)",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Inline into typed data modules"
+    },
+    {
+      "capability": "auth",
+      "source": "none present",
+      "outcome": "none",
+      "status": "verified",
+      "next_action": ""
+    },
+    {
+      "capability": "database",
+      "source": "none present (fully static site)",
+      "outcome": "none",
+      "status": "verified",
+      "next_action": ""
+    },
+    {
+      "capability": "search",
+      "source": "Pagefind static search on /search",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Client-side search over the typed content data, covering skill names and aliases"
+    },
+    {
+      "capability": "cv-download",
+      "source": "public/cv.md",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Serve from public/"
+    },
+    {
+      "capability": "project-images",
+      "source": "public/projects/** (ainaa, all-notification-blocker, child-shield, tick)",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Copy into public/projects"
+    },
+    {
+      "capability": "seo",
+      "source": "per-page title/description/OG/Twitter tags",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "head() on every route; sitemap.xml simplified away (static hosting adds preview cards instead)"
+    },
+    {
+      "capability": "i18n-toggle",
+      "source": "Header EN/\u0639\u0631\u0628\u064a toggle switching html lang/dir",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "Port as client-side toggle in Header"
+    },
+    {
+      "capability": "external-providers",
+      "source": "none (static, no API keys)",
+      "outcome": "none",
+      "status": "verified",
+      "next_action": ""
+    },
+    {
+      "capability": "records-export",
+      "source": "no database exists",
+      "outcome": "none",
+      "status": "verified",
+      "next_action": ""
+    }
   ]
 }
