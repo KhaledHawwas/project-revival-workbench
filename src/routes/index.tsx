@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const items = getAllItems();
-  const featured = items.filter((item) => item.collection === "projects" && item.data.featured);
+  const featured = items.filter((item) => item.collection === "projects" && item.data["featured"] === true);
   const skillCounts = getSkillCounts();
   const latestAchievements = items.filter((item) => item.collection === "achievements").slice(0, 2);
 
@@ -99,7 +99,7 @@ function Index() {
         <SectionHeading eyebrow={`03 / ${labels.en.latest}`} title="Proof of continuous learning" href="/timeline" action={labels.en.viewAll} />
         <div className="grid gap-5 md:grid-cols-2">
           {latestAchievements.map((item) => (
-            <ItemCard key={`${item.collection}-${item.id}`} item={{ ...item, date: item.date }} />
+            <ItemCard key={item.id} item={item} />
           ))}
         </div>
       </section>
