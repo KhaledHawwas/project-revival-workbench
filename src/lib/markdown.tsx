@@ -54,7 +54,7 @@ export function renderMarkdown(markdown: string): ReactNode[] {
     if (heading && headingText) {
       flushList();
       blocks.push(
-        <h2 key={index} className="mt-10 mb-3 text-2xl font-semibold tracking-tight text-foreground">
+        <h2 key={index} className="mt-10 mb-3 text-2xl font-semibold tracking-tight text-ink">
           {renderInline(headingText, `h-${index}`)}
         </h2>
       );
