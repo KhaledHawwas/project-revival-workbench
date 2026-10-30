@@ -47,14 +47,15 @@ export function renderMarkdown(markdown: string): ReactNode[] {
       flushList();
       return;
     }
-    const unordered = line.match(/^- (.*)$/);
-    const ordered = line.match(/^(\d+)\. (.*)$/);
-    const heading = line.match(/^## (.*)$/);
-    if (heading) {
+    const unordered = /^- (.*)$/.exec(line);
+    const ordered = /^(?:\d+)\. (.*)$/.exec(line);
+    const heading = /^## (.*)$/.exec(line);
+    const headingText = heading?.[1];
+    if (heading && headingText) {
       flushList();
       blocks.push(
         <h2 key={index} className="mt-10 mb-3 text-2xl font-semibold tracking-tight text-foreground">
-          {renderInline(heading[1], `h-${index}`)}
+          {renderInline(headingText, `h-${index}`)}
         </h2>
       );
     } else if (unordered) {
@@ -62,13 +63,13 @@ export function renderMarkdown(markdown: string): ReactNode[] {
         flushList();
         list = { ordered: false, items: [] };
       }
-      list.items.push(unordered[1]);
+      list.items.push(unordered[1] ?? "");
     } else if (ordered) {
       if (!list || !list.ordered) {
         flushList();
         list = { ordered: true, items: [] };
       }
-      list.items.push(ordered[2]);
+      list.items.push(ordered[1] ?? "");
     } else {
       flushList();
       blocks.push(
