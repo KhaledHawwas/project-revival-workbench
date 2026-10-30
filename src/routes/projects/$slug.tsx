@@ -52,7 +52,6 @@ function ProjectDetail() {
         </div>
       )}
       <div className="max-w-none text-navy-soft">{renderMarkdown(project.body)}</div>
-      {certifications.length === 0 && null}
       {project.gallery.length > 0 && (
         <section className="mt-12">
           <p className="eyebrow mb-5">Screenshots</p>

@@ -103,8 +103,6 @@ function Index() {
           ))}
         </div>
       </section>
-      {/* formatDate is used by ItemCard; keep the helper referenced for the home date formatting parity */}
-      {formatDate(featured[0]?.date)}
     </>
   );
 }
