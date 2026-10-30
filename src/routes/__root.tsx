@@ -78,21 +78,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Khaled Hawwas — Android & Kotlin Developer" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Khaled Hawwas, an Android developer specializing in Kotlin, Jetpack Compose, scalable architecture, and polished mobile products."
+      },
+      { property: "og:title", content: "Khaled Hawwas — Android & Kotlin Developer" },
+      {
+        property: "og:description",
+        content:
+          "Portfolio of Khaled Hawwas, an Android developer specializing in Kotlin, Jetpack Compose, scalable architecture, and polished mobile products."
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" }
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,

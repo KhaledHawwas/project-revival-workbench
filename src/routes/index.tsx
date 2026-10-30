@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ItemCard } from "@/components/portfolio/item-card";
 import { SectionHeading, SkillChip } from "@/components/portfolio/skills";
-import { getAllItems, getSkillCounts, formatDate } from "@/lib/portfolio";
+import { getAllItems, getSkillCounts } from "@/lib/portfolio";
 import { labels, siteConfig } from "@/data/site";
 
 export const Route = createFileRoute("/")({

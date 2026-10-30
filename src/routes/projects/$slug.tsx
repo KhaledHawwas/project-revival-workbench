@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SkillChip } from "@/components/portfolio/skills";
 import { renderMarkdown } from "@/lib/markdown";
 import { allProjects, formatDate } from "@/lib/portfolio";
-import { certifications } from "@/data/items";
 
 export const Route = createFileRoute("/projects/$slug")({
   head: ({ params }) => {
