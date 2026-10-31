@@ -12,11 +12,12 @@
  *
  * The :root and .dark blocks define the actual color values using oklch.
  * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
+
+@theme {
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -46,24 +47,11 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(0.98 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -82,19 +70,6 @@
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
 .dark {
@@ -117,22 +92,15 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
-/* Portfolio design tokens (migrated from the Astro source's global.css) */
+/* ===================================================================
+   Portfolio theme — "dev terminal"
+   Palette: near-black canvas (#0a0c0a), panel #131713,
+   terminal green accent #4ade80, light terminal text #d8ead9.
+   Components must use the semantic tokens below (text-accent,
+   bg-surface, border-line, …), never raw hex values.
+   =================================================================== */
 @theme inline {
   --color-base: var(--pf-base);
   --color-surface: var(--pf-surface);
@@ -150,31 +118,19 @@
 }
 
 :root {
-  --pf-base: #080d16;
-  --pf-surface: #0e1625;
-  --pf-panel: #0b1321;
-  --pf-ink: #e8edf5;
-  --pf-fog: #aebbd0;
-  --pf-mist: #91a0b5;
-  --pf-navy-soft: #b8c5d6;
-  --pf-line: #1d2b40;
-  --pf-line-soft: #22314a;
-  --pf-accent: #70e1c1;
-  --pf-accent-strong: #a1f2de;
-  --pf-on-accent: #071019;
-  --pf-amber: #f4bd78;
-}
-
-@layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
-  body {
-    background-color: var(--pf-base);
-    color: var(--pf-ink);
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  }
+  --pf-base: #0a0c0a;
+  --pf-surface: #101410;
+  --pf-panel: #131713;
+  --pf-ink: #d8ead9;
+  --pf-fog: #a8bcaa;
+  --pf-mist: #7e9182;
+  --pf-navy-soft: #c2d4c4;
+  --pf-line: #1c231c;
+  --pf-line-soft: #27312a;
+  --pf-accent: #4ade80;
+  --pf-accent-strong: #86efac;
+  --pf-on-accent: #06130a;
+  --pf-amber: #fbbf24;
 }
 
 :root {
@@ -185,80 +141,202 @@ html {
   scroll-behavior: smooth;
 }
 
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--pf-base);
+    color: var(--pf-ink);
+    font-family: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 15px;
+  }
+}
+
 .container {
   width: min(1120px, calc(100% - 2.5rem));
   margin-inline: auto;
 }
 
+/* ---------- terminal utilities ---------- */
+
 .eyebrow {
   color: var(--pf-accent);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+/* Prompt label like `$ ls ./projects` */
+.term-prompt {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: var(--pf-mist);
+  font-size: 0.8rem;
+}
+.term-prompt::before {
+  content: "$ ";
+  color: var(--pf-accent);
 }
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(112, 225, 193, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(112, 225, 193, 0.045) 1px, transparent 1px);
-  background-size: 40px 40px;
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(74, 222, 128, 0.07), transparent 70%),
+    linear-gradient(rgba(74, 222, 128, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
 }
 
 .card {
   border: 1px solid var(--pf-line-soft);
-  background: linear-gradient(145deg, rgba(20, 32, 51, 0.88), rgba(11, 18, 31, 0.94));
-  border-radius: 1rem;
+  background: linear-gradient(180deg, #141a15 0%, #0e120e 100%);
+  border-radius: 0.5rem;
+  box-shadow:
+    inset 0 1px 0 rgba(216, 234, 217, 0.04),
+    0 10px 30px -18px rgba(0, 0, 0, 0.9);
 }
+
+.card:hover {
+  border-color: color-mix(in oklab, var(--pf-accent) 45%, var(--pf-line-soft));
+  box-shadow:
+    inset 0 1px 0 rgba(216, 234, 217, 0.05),
+    0 0 0 1px rgba(74, 222, 128, 0.08),
+    0 14px 40px -18px rgba(0, 0, 0, 0.9);
+}
+
+/* Terminal window with a title bar (used for hero terminal, code panels) */
+.term-window {
+  border: 1px solid var(--pf-line-soft);
+  border-radius: 0.6rem;
+  background: linear-gradient(180deg, #10150f 0%, #0b0e0a 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(216, 234, 217, 0.05),
+    0 24px 70px -30px rgba(0, 0, 0, 0.95),
+    0 0 60px -30px rgba(74, 222, 128, 0.35);
+  overflow: hidden;
+}
+
+.term-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--pf-line);
+  background: rgba(20, 26, 21, 0.9);
+  padding: 0.55rem 0.9rem;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  color: var(--pf-mist);
+}
+
+.term-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: #243024;
+  border: 1px solid #31402f;
+}
+.term-dot-active {
+  background: var(--pf-accent);
+  border-color: var(--pf-accent-strong);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
+}
+
+/* Blinking block cursor */
+.cursor-blink::after {
+  content: "▋";
+  color: var(--pf-accent);
+  margin-left: 0.15em;
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Output lines inside a terminal window */
+.term-line {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.term-cmd { color: var(--pf-ink); }
+.term-cmd::before { content: "$ "; color: var(--pf-accent); }
+.term-out { color: var(--pf-fog); }
+.term-dim { color: var(--pf-mist); }
+
+/* ---------- chips (mono tokens) ---------- */
 
 .chip {
   display: inline-flex;
-  border: 1px solid #2d4860;
-  border-radius: 999px;
-  padding: 0.3rem 0.7rem;
-  color: #b9c9dc;
-  font-size: 0.78rem;
-  transition: 0.2s;
+  align-items: center;
+  border: 1px solid #2b3a2d;
+  border-radius: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  color: #a8bcaa;
+  background: rgba(74, 222, 128, 0.05);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
 }
-
+.chip::before { content: "#"; color: var(--pf-mist); margin-right: 0.35rem; font-size: 0.68rem; }
 .chip:hover {
   border-color: var(--pf-accent);
   color: var(--pf-accent);
+  background: rgba(74, 222, 128, 0.1);
 }
 
-.chip-kotlin { border-color: #9b8cff; background: rgba(155, 140, 255, 0.12); color: #c9c0ff; }
-.chip-android { border-color: #70e1c1; background: rgba(112, 225, 193, 0.12); color: #9af0d7; }
-.chip-compose { border-color: #70b7ff; background: rgba(112, 183, 255, 0.12); color: #a7d4ff; }
-.chip-java { border-color: #f4bd78; background: rgba(244, 189, 120, 0.12); color: #ffd39e; }
-.chip-kmp { border-color: #d49cff; background: rgba(212, 156, 255, 0.12); color: #e4c4ff; }
-.chip-architecture { border-color: #ff8faa; background: rgba(255, 143, 170, 0.12); color: #ffb6c8; }
-.chip-python { border-color: #f2d36b; background: rgba(242, 211, 107, 0.12); color: #f7e6a3; }
-.chip-ktor, .chip-webrtc, .chip-websockets { border-color: #6fe0e7; background: rgba(111, 224, 231, 0.12); color: #a1f2f5; }
-.chip-git, .chip-algorithms, .chip-testing { border-color: #ff9a76; background: rgba(255, 154, 118, 0.12); color: #ffc0a8; }
-.chip-leadership, .chip-coze, .chip-accessibility { border-color: #ff89d8; background: rgba(255, 137, 216, 0.12); color: #ffb8e7; }
-.chip-firebase, .chip-room, .chip-koin { border-color: #ffbd69; background: rgba(255, 189, 105, 0.12); color: #ffdba6; }
-.chip-di, .chip-vpn, .chip-workmanager { border-color: #8bc6ff; background: rgba(139, 198, 255, 0.12); color: #c1e0ff; }
-.chip-notifications, .chip-camerax, .chip-coil { border-color: #b8e986; background: rgba(184, 233, 134, 0.12); color: #d5f5ac; }
-.chip-sql { border-color: #c2a4ff; background: rgba(194, 164, 255, 0.12); color: #d9c7ff; }
-.chip-default { border-color: #91a0b5; background: rgba(145, 160, 181, 0.12); color: #c8d2df; }
+/* Accent tints for the handful of headline skills */
+.chip-android { border-color: #2f5d3a; color: #86efac; background: rgba(74, 222, 128, 0.09); }
+.chip-kotlin { border-color: #4c4680; color: #b6aefc; background: rgba(139, 122, 255, 0.09); }
+.chip-compose { border-color: #2f5a75; color: #93cdf8; background: rgba(93, 168, 235, 0.09); }
+.chip-kmp { border-color: #5a3f7a; color: #cfa9f5; background: rgba(174, 121, 242, 0.09); }
+.chip-java { border-color: #6b5a2a; color: #e9c983; background: rgba(228, 186, 100, 0.09); }
+.chip-python { border-color: #6b5a2a; color: #e9d283; background: rgba(228, 205, 100, 0.09); }
+.chip-architecture { border-color: #71404e; color: #f2a7bd; background: rgba(242, 138, 168, 0.09); }
+.chip-git { border-color: #71463a; color: #f0b39c; background: rgba(240, 152, 124, 0.09); }
+.chip-default { border-color: #2b3a2d; color: #a8bcaa; }
 
-.project-mint { border-top: 2px solid #70e1c1; }
-.project-violet { border-top: 2px solid #9b8cff; }
-.project-blue { border-top: 2px solid #70b7ff; }
-.project-pink { border-top: 2px solid #ff89d8; }
-.project-orange { border-top: 2px solid #f4bd78; }
-.project-yellow { border-top: 2px solid #f2d36b; }
-.project-cyan { border-top: 2px solid #6fe0e7; }
-.project-purple { border-top: 2px solid #d49cff; }
-.project-lime { border-top: 2px solid #b8e986; }
-.project-red { border-top: 2px solid #ff8faa; }
-.project-default { border-top: 2px solid #91a0b5; }
+/* ---------- links & focus ---------- */
+
+.link-accent {
+  color: var(--pf-accent);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in oklab, var(--pf-accent) 40%, transparent);
+  transition: text-decoration-color 0.2s, color 0.2s;
+}
+.link-accent:hover {
+  color: var(--pf-accent-strong);
+  text-decoration-color: var(--pf-accent-strong);
+}
 
 .focus-ring:focus-visible,
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--pf-accent);
   outline-offset: 3px;
+}
+
+/* Section divider with mono label */
+.rule-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--pf-mist);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.rule-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--pf-line-soft), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -18,14 +18,16 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
-        <p className="eyebrow">404</p>
-        <h1 className="mt-4 text-5xl font-bold">This page took a wrong turn.</h1>
+        <p className="term-line term-dim">errno 404 — page not found</p>
+        <h1 className="mt-4 font-mono text-5xl font-bold">
+          <span className="text-accent">$</span> cd <span className="cursor-blink"></span>
+        </h1>
         <div className="mt-8">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 font-bold text-on-accent transition-colors hover:bg-accent-strong"
+            className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 font-mono text-sm font-bold text-on-accent transition-colors hover:bg-accent-strong"
           >
-            Back home
+            $ back home
           </Link>
         </div>
       </div>
@@ -97,6 +99,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
+      }
     ],
   }),
   shellComponent: RootShell,
