@@ -1,5 +1,6 @@
 import { labels, siteConfig } from "@/data/site";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { useState } from "react";
 
 const navLinks = [
   { to: "/", label: labels.en.home },
@@ -11,6 +12,12 @@ const navLinks = [
 ] as const;
 
 export function Header() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const isActive = (to: string) =>
+    to === "/" ? pathname === "/" : pathname.startsWith(to);
+
   const toggleLanguage = () => {
     const html = document.documentElement;
     const arabic = html.lang === "ar";
@@ -19,39 +26,92 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-10 border-b border-line bg-base/90 backdrop-blur">
-      <div className="container flex h-18 items-center justify-between gap-5">
-        <Link to="/" className="text-lg font-bold tracking-tight">
-          <span className="text-accent">kh.</span>hawwas
+    <header className="sticky top-0 z-20 border-b border-line bg-base/85 backdrop-blur-md">
+      <div className="container flex h-16 items-center justify-between gap-5">
+        <Link to="/" className="font-mono text-base font-bold tracking-tight">
+          <span className="text-accent">~/</span>kh.hawwas
+          <span className="cursor-blink"></span>
         </Link>
-        <nav className="hidden gap-6 text-sm text-navy-soft md:flex" aria-label="Main navigation">
+
+        <nav
+          className="hidden items-center gap-1 font-mono text-sm md:flex"
+          aria-label="Main navigation"
+        >
           {navLinks.map((link) => (
-            <Link key={link.to} to={link.to} className="hover:text-accent">
+            <Link
+              key={link.to}
+              to={link.to}
+              aria-current={isActive(link.to) ? "page" : undefined}
+              className={`rounded px-3 py-1.5 transition-colors ${
+                isActive(link.to)
+                  ? "bg-accent/10 text-accent"
+                  : "text-fog hover:text-accent"
+              }`}
+            >
+              <span className="text-mist">./</span>
               {link.label}
             </Link>
           ))}
         </nav>
-        <button type="button" onClick={toggleLanguage} className="chip focus-ring" aria-label="Switch language">
-          عربي
-        </button>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="chip"
+            aria-label="Switch language"
+          >
+            عربي
+          </button>
+          <button
+            type="button"
+            className="chip md:hidden"
+            aria-expanded={mobileOpen}
+            aria-label="Toggle menu"
+            onClick={() => setMobileOpen((open) => !open)}
+          >
+            {mobileOpen ? "close" : "menu"}
+          </button>
+        </div>
       </div>
+
+      {mobileOpen && (
+        <nav
+          className="border-t border-line bg-panel px-6 py-4 font-mono text-sm md:hidden"
+          aria-label="Mobile navigation"
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setMobileOpen(false)}
+              className={`block rounded px-2 py-2.5 ${
+                isActive(link.to) ? "text-accent" : "text-fog"
+              }`}
+            >
+              <span className="text-mist">./</span>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-line py-10">
-      <div className="container flex flex-col gap-3 text-sm text-mist sm:flex-row sm:items-center sm:justify-between">
-        <p>
-          © {new Date().getFullYear()} {siteConfig.name}. Built with Kotlin energy & TanStack.
+    <footer className="mt-24 border-t border-line py-8">
+      <div className="container flex flex-col gap-3 text-sm sm:flex-row sm:items-center sm:justify-between">
+        <p className="term-line term-dim">
+          © {new Date().getFullYear()} {siteConfig.name} — <span className="term-out">process exited with code 0</span>
         </p>
-        <div className="flex gap-4">
-          <a className="hover:text-accent" href={siteConfig.github} target="_blank" rel="noreferrer">
-            GitHub
+        <div className="flex gap-5 font-mono text-xs">
+          <a className="link-accent" href={siteConfig.github} target="_blank" rel="noreferrer">
+            github ↗
           </a>
-          <a className="hover:text-accent" href={siteConfig.linkedin} target="_blank" rel="noreferrer">
-            LinkedIn
+          <a className="link-accent" href={siteConfig.linkedin} target="_blank" rel="noreferrer">
+            linkedin ↗
           </a>
         </div>
       </div>
